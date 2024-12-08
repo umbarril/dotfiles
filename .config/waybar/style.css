@@ -1,0 +1,272 @@
+/* based on */
+/* https://new.reddit.com/r/unixporn/comments/1bxkbxb/hyprland_just_bought_an_amd_gpu_and_switched_to/ */
+/* https://github.com/Szelwiga/dots/blob/main/waybar/style.css */
+* {
+    font-size: 10pt;
+    font-family: monospace;
+    font-weight: bold;
+    min-height: 0;
+    color: #e3d6ba;
+}
+
+* {
+   /* for some reason I can't change the bar height without this */
+   padding: 0;
+   margin: 0;
+}
+
+tooltip label {
+    padding: 3px 3px 3px 3px;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 14px;
+    color: #e3d6ba;
+}
+
+tooltip {
+    padding: 10px 10px 10px 10px;
+    background: #2e3336;
+    border: 0px solid;
+    border-radius: 8px;
+    color: #e3d6ba;
+}
+
+window#waybar {
+    background: rgba(0, 0, 0, 0);
+    color: #fdf6e3;
+}
+
+/* #custom-dot { */
+/*     font-size: 8px; */
+/*     font-family: Typeface; */
+/* } */
+/* #custom-memicon1 { */
+/*     font-size: 18px; */
+/* } */
+/* #custom-cpuicon { */
+/*     font-weight: normal; */
+/*     font-size: 18px; */
+/* } */
+
+#workspaces {
+    font-size: 100pt;
+    font-family: Typeface;
+
+    padding: 2px 12px 2px 12px;
+    /* background: #1e2326; */
+    background: #2e3336;
+    border: 0px solid;
+    border-radius: 8px;
+    /* min-width: 220px; */
+}
+
+#workspaces button.active {
+    background: #175B70;
+}
+
+#custom-updates{
+    padding: 3px 3px 3px 3px;
+    background: #591770;
+    border: 0px solid;
+    border-radius: 8px;
+}
+
+#custom-drawer-sign{
+    font-size: 12pt;
+    /* padding: 3px 9px 9px 3px; */
+    background: #0f1215;
+    /* background: #591770; */
+    border: 0px solid;
+    border-radius: 20px;
+}
+
+#custom-nightmode{
+    padding: 3px 8px 3px 8px;
+    /* background: #ffff88; */
+    background: #207057;
+    border: 0px solid;
+    border-radius: 8px;
+}
+
+#custom-wallpaper-picker{
+    padding: 3px 3px 3px 3px;
+    /* background: #ffff88; */
+    background: #2F7017;
+    border: 0px solid;
+    border-radius: 8px;
+}
+
+#custom-hyprpicker{
+    padding: 3px 3px 3px 3px;
+    background: #f34444;
+    border: 0px solid;
+    border-radius: 8px;
+}
+
+/* #custom-app{ */
+/*     background: #2e3336; */
+/*     border: 0px solid; */
+/*     border-radius: 8px; */
+/* } */
+
+#clock{
+    font-size: 11pt;
+    padding: 3px 5px 3px 5px;
+    background: rgb(23, 91, 112);
+    border: 0px solid;
+    border-radius: 8px;
+    min-width: 180px;
+}
+
+.modules-right{
+    border: 0px solid;
+    /*  background: #0f1215;*/
+    background: #141619;
+    /* background: none; */
+    border-radius: 13px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* padding-left: 10px; */
+    padding-left: 10px;
+    padding-right: 10px;
+    /* margin-left: 400px; */
+}
+
+.modules-left{
+    border: 0px solid;
+    /*  background: #0f1215;*/
+    background: #141619;
+    /* background: none; */
+    border-radius: 13px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* padding-left: 10px; */
+    padding-left: 10px;
+    padding-right: 10px;
+    /* margin-left: 400px; */
+    margin-right: 20px;
+}
+
+.modules-center{
+    border: 0px solid;
+    /*  background: #0f1215;*/
+    background: #141619;
+    /* background: none; */
+    border-radius: 13px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* padding-left: 10px; */
+    padding-left: 10px;
+    padding-right: 10px;
+    /* margin-left: 400px; */
+}
+
+#hardware{
+    background: rgb(23, 91, 112);
+    padding: 0px 0px 0px 0px;
+    border: 0px solid;
+    border-radius: 8px;
+    /* min-width: 210px; */
+}
+
+#network{
+    background: rgb(23, 91, 112);
+    padding: 3px 10px;
+    margin: 0px 0px 0px 0px;
+    border: 0px solid;
+    border-radius: 8px;
+    min-width: 65px;
+}
+
+#custom-uptime {
+    font-family: "NotoSansMono Nerd Font";
+    /* font-size: 12pt; */
+    padding: 3px 8px 3px 8px;
+    background: rgb(23, 91, 112);
+    background: #2e3336;
+    border: 0px solid;
+    border-radius: 15px;
+}
+
+#custom-notification {
+    font-family: "NotoSansMono Nerd Font";
+    /* font-size: 12pt; */
+    padding: 3px 8px 3px 8px;
+    background: rgb(23, 91, 112);
+    background: #2e3336;
+    border: 0px solid;
+    border-radius: 15px;
+}
+
+#battery {
+    padding: 3px 10px 3px 10px;
+    background: rgb(23, 91, 112);
+    background: #2e3336;
+    border: 0px solid;
+    border-radius: 8px;
+}
+
+#cpu{
+    padding: 3px 3px;
+    margin: 0px 0px 0px 0px;
+}
+
+/* window#waybar.kitty { */
+/*         background-color: #eeeeee; */
+/*         color: #000000; */
+/* } */
+
+#pulseaudio{
+    padding: 3px 10px 3px 10px;
+    background: rgb(23, 91, 112);
+    background: #2e3336;
+    border: 0px solid;
+    border-radius: 8px;
+}
+
+#custom-playerctl{
+    padding: 3px 10px 3px 10px;
+    background: rgb(23, 91, 112);
+    background: #2e3336;
+    border: 0px solid;
+    border-radius: 8px;
+    min-width: 110px;
+}
+
+#tray{
+    padding: 3px 10px 3px 10px;
+    background: #2e3336;
+    border: 0px solid;
+    border-radius: 8px;
+}
+
+#custom-cpuicon{
+    padding: 3px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+#memory{
+    padding: 3px 3px;
+    margin: 0px 0px 0px 0px;
+}
+
+#custom-memicon1{
+    padding: 3px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+#custom-space{
+    padding: 3px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+#pulseaudio{
+    padding: 3px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+#custom-app{
+    padding: 3px 10px;
+    margin: 0px 0px 0px 0px;
+    min-width: 180px;
+}

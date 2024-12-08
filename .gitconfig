@@ -1,0 +1,13 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[user]
+	email = 74427600+UmBarril@users.noreply.github.com
+	name = UmBarril
+[core]
+	autocrlf = input
+[includeIf "gitdir:~/work/"]
+    path = ~/.gitconfig-work

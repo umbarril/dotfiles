@@ -1,0 +1,450 @@
+// -*- mode: json -*-
+
+// ┌──────────────────────────────────┐
+// │                                  │
+// │     ░█░█░█▀█░█░█░█▀▄░█▀█░█▀▄     │
+// │     ░█▄█░█▀█░░█░░█▀▄░█▀█░█▀▄     │
+// │     ░▀░▀░▀░▀░░▀░░▀▀░░▀░▀░▀░▀     │
+// │                                  │
+// └──────────────────────────────────┘
+
+// many things copied from https://github.com/Axenide/Dotfiles/blob/main/dots/.config/waybar/config.jsonc
+{
+    "layer": "top",
+    "position": "top", // Waybar position (top|bottom|left|right)
+    // TODO: SOMEHOW MAKE THE HEIGHT EVEN SMALLER
+    "height": 12, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "margin-top": 7,
+    "margin-left": 12,
+    "margin-right": 12,
+    "margin-bottom": 0,
+
+    "modules-left": [
+        "hyprland/workspaces",
+        "group/sounds"
+        // "group/group-power"
+    ],
+    "modules-center": [
+        // "custom/space",
+        // "custom/media",
+        // "custom/space",
+        "clock",
+        "custom/uptime"
+        // "mpd",
+        // "custom/space",
+        // "group/group-applets",
+    ],
+    "modules-right": [
+        // "cpu",
+        // "custom/space",
+        "group/tools",
+        "custom/updates",
+        "group/hardware",
+        "custom/notification",
+        "group/battery-stats",
+        "custom/space",
+        "tray"
+    ],
+    "group/battery-stats": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "some-tools",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "battery",
+            "battery#bat0",
+            "battery#bat1",
+            "custom/battery-threshold"
+        ]
+    },
+    "group/sounds": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "some-tools",
+            "transition-left-to-right": true
+        },
+        "modules": [
+            "pulseaudio",
+            "custom/playerctl"
+        ]
+    },
+    "group/tools": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "some-tools",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "custom/drawer-sign",
+            "custom/nightmode",
+            "custom/wallpaper-picker",
+            "custom/hyprpicker"
+        ]
+    },
+    "custom/drawer-sign": {
+        "format": " &lt; ", // <
+        "tooltip": false
+    },
+    "group/hardware": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/space",
+            "cpu",
+            "memory",
+            "custom/space"
+            // "pulseaudio",
+        ]
+    },
+    "hyprland/window": {
+        "separate-outputs": true
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": " 一 ",
+            "2": " 二 ",
+            "3": " 三 ",
+            "4": " 四 ",
+            "5": " 五 ",
+            "6": " 六 ",
+            "7": " 七 ",
+            "8": " 八 ",
+            "9": " 九 ",
+            // "urgent": "",
+            // "active": "",
+            // "default": "󰧞",
+            "terminals": "   ",
+            "obsidian": "   ",
+            "filemanager": "   "
+        },
+        "all-outputs": false,
+        "show-special": true,
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "on-click-right": "fullscreen"
+        // "persistent-workspaces": {
+        //     "*": 10
+        // }
+        // "window-rewrite-default": "",
+        // "window-rewrite": {
+        //     "title<.*youtube.*>": "", // Windows whose titles contain "youtube"
+        //     "class<firefox>": "", // Windows whose classes are "firefox"
+        //     "class<firefox> title<.*github.*>": "", // Windows whose class is "firefox" and title contains "github". Note that "class" always comes first.
+        //     "foot": "", // Windows that contain "foot" in either class or title. For optimization reasons, it will only match against a title if at least one other window explicitly matches against a title.
+        //     "code": "󰨞",
+        // },
+    },
+    "custom/uptime": {
+        "format": "UP: {0} days",
+        "exec": "awk '{print int($1/86400)}' /proc/uptime",
+        "tooltip": false
+    },
+    "custom/space": {
+        "format": " ",
+        "tooltip": false
+    },
+    "custom/playerctl": {
+        "format": "{0} :: <span>{1}</span>",
+        "return-type": "json",
+        "max-length": 64,
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "on-click-middle": "playerctl play-pause",
+        "on-click": "playerctl previous",
+        "on-click-right": "playerctl next",
+        "format-icons": {
+            "Playing": "<span foreground='#B1B946'>󰝚</span>",
+            "Paused": "<span foreground='#B1B946'>󰝛</span>"
+        }
+    },
+    "custom/playerlabel": {
+        "format": "<span>{}</span>",
+        "return-type": "json",
+        "max-length": 48,
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "on-click-middle": "playerctl play-pause",
+        "on-click": "playerctl previous",
+        "on-click-right": "playerctl next",
+        "format-icons": {
+            "Playing": "<span foreground='#B1B946'>󰒮 󰐌  󰒭</span>",
+            "Paused": "<span foreground='#47423E'>󰒮 󰏥  󰒭</span>"
+        }
+    },
+    // from swaync example on github
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+        "notification": "<span foreground='red'><sup></sup></span>",
+        "none": "",
+        "dnd-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-none": "",
+        "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "inhibited-none": "",
+        "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "custom/nightmode": {
+        // https://www.reddit.com/r/linux/comments/1c290rv/i_made_a_script_to_control_nightlight_through/
+        "format": "☀",
+        "on-click": "bash ~/.config/waybar/scripts/sunONOFF", // TODO: usar hyprsunset
+        "on-scroll-up": "bash ~/.config/waybar/scripts/red_dec",
+        "on-scroll-down": "bash ~/.config/waybar/scripts/red_inc",
+        "tooltip-format": "Toggle Night Mode."
+    },
+    "custom/wallpaper-picker": {
+        "format": "   ",
+        "on-click": "bash $XDG_CONFIG_HOME/waybar/scripts/change-wallpaper.sh",
+        "on-click-right": "bash $XDG_CONFIG_HOME/waybar/scripts/random-wallpaper.sh",
+        "tooltip-format": "Choose wallpaper."
+    },
+    "custom/hyprpicker": {
+        "format": " 󰈋 ",
+        "on-click": "bash $XDG_CONFIG_HOME/waybar/scripts/hyprpicker-hex.sh",
+        "on-click-right": "bash $XDG_CONFIG_HOME/waybar/scripts/hyprpicker-rgb.sh",
+        "tooltip-format": "Pick a color."
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "custom/updates": {
+       "format": " {} {icon}",
+       "return-type": "json",
+       "format-icons": {
+           "has-updates": "󱍷 ",
+           "updated": "󰂪 "
+       },
+       "exec-if": "which waybar-module-pacman-updates",
+       // waybar-module-pacman-updates is installed through yay
+       "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300"
+    },
+    "clock": {
+        "timezone": "America/Sao_Paulo",
+        // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": " {:%d-%m-24  %H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode"          : "year",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+        // "format-alt": "{:%Y-%m-%d}"
+    },
+    "battery#bat0": {
+        "bat": "BAT0",
+        "format": "B0 {capacity}% {icon}",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
+    "battery#bat1": {
+        "bat": "BAT1",
+        "format": "B1 {capacity}% {icon}",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
+    "battery": {
+        "states": {
+            "full": 100,
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "tooltip-format": "{timeTo}\nPower: -{power}W",
+        "tooltip-format-charging": "{timeTo}\nPower: +{power}W", // arrumar alguma maneira de mostra o Mode e o Threshold
+        "tooltip-format-full": "{timeTo}\nThreshold: ",
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-critical": "{capacity}%  ",
+        "format-icons": [" ", " ", " ", " ", " "],
+        "on-click-right": "bash battery-threshold $(echo 'on;off' | rofi -sep ';' -dmenu -p 'Choose to toggle battery threshold ON or OFF:')",
+        "on-click-middle": "bash power-mode $(echo 'ac;batery;battery-discord' | rofi -sep ';' -dmenu -p 'Choose battery mode:')"
+    },
+    // "custom/battery-mode": {
+    //     "format": "Mode: {0}",
+    //     "exec": "cat /tmp/power-mode",
+    //     "tooltip": false
+    // },
+    "custom/battery-threshold": {
+        "format": "Theshold: {0}",
+        "exec": "battery-threshold get | awk '{print $2}'",
+        "tooltip": false
+    },
+    "cpu": {
+        "format": "{usage}%  ",
+        "tooltip": true
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": [" ", "", " "]
+    },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": " ",
+        "performance": " ",
+        "balanced": " ",
+        "power-saver": ""
+      }
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        // "format": "{volume}% {icon} | {format_source}",
+        "format": " {icon} {format_source} ",
+        "format-bluetooth": " {icon} {format_source} ",
+        "format-bluetooth-muted": "   {format_source} ",
+        "format-muted": "   {format_source} ",
+        "format-source": "",
+        "on-scroll-up": "volume up",
+        "on-scroll-down": "volume down",
+        "format-source-muted": " ",
+        "format-icons": {
+            "headphone": " ",
+            "hands-free": "",
+            "headset": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": ["", " ", "  "]
+        },
+        "on-click": "volume mute",
+        "on-click-middle": "pavucontrol",
+        "on-click-right": "microphone mute-toggle",
+        "tooltip-format": "Volume: {volume}%\n{desc}\nLMC MUTE | RMC MIC MUTE | MMC PAVUCONTROL"
+    },
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": " ",
+            "default": "🎜 "
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "  ({signalStrength}%)",
+        "format-ethernet": "{ipaddr}/{cidr}  ",
+        "tooltip-format": "{ifname} via {gwaddr}  ",
+        "format-linked": "{ifname} (No IP)  ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{essid} {ifname}: {ipaddr}/{cidr}"
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}%  ",
+        "format-disconnected": "Disconnected  ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped  ",
+        "unknown-tag": "N/A",
+        "interval": 5,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"> </span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": " 1"
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "group/group-power": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "not-power",
+            "transition-left-to-right": false,
+        },
+        "modules": [
+            "custom/power", // First element is the "group leader" and won't ever be hidden
+            "custom/quit",
+            "custom/lock",
+            "custom/reboot",
+        ]
+    },
+    "custom/quit": {
+        "format": "󰗼",
+        "tooltip": false,
+        "on-click": "hyprctl dispatch exit"
+    },
+    "custom/lock": {
+        "format": "󰍁",
+        "tooltip": false,
+        "on-click": "swaylock"
+    },
+    "custom/reboot": {
+        "format": "󰜉",
+        "tooltip": false,
+        "on-click": "reboot"
+    },
+    "custom/power": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "shutdown now"
+    },
+    "custom/power": {
+        "format" : " ⏻ ",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+		"menu-actions": {
+			"shutdown": "shutdown",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
+    },
+}
