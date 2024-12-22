@@ -43,9 +43,8 @@
         "group/tools",
         "custom/updates",
         "group/hardware",
-        "custom/notification",
         "group/battery-stats",
-        "custom/space",
+        "custom/notification",
         "tray"
     ],
     "group/battery-stats": {

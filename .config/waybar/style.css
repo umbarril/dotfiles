@@ -1,18 +1,29 @@
+
+@import "colors-waybar.css";
+/* @import "my-colors.css"; */
+
 /* based on */
 /* https://new.reddit.com/r/unixporn/comments/1bxkbxb/hyprland_just_bought_an_amd_gpu_and_switched_to/ */
 /* https://github.com/Szelwiga/dots/blob/main/waybar/style.css */
+
+window#waybar {
+    background: rgba(0, 0, 0, 0);
+    /* color: #fdf6e3; */
+    color: @foreground;
+}
+
 * {
     font-size: 10pt;
     font-family: monospace;
     font-weight: bold;
     min-height: 0;
-    color: #e3d6ba;
+    color: @foreground;
 }
 
 * {
-   /* for some reason I can't change the bar height without this */
-   padding: 0;
-   margin: 0;
+    /* for some reason I can't change the bar height without this */
+    padding: 0;
+    margin: 0;
 }
 
 tooltip label {
@@ -20,252 +31,212 @@ tooltip label {
     font-family: monospace;
     font-weight: bold;
     font-size: 14px;
-    color: #e3d6ba;
+    color: @foreground;
 }
 
 tooltip {
     padding: 10px 10px 10px 10px;
-    background: #2e3336;
     border: 0px solid;
     border-radius: 8px;
-    color: #e3d6ba;
+    background: @background;
+    color: @foreground;
 }
 
-window#waybar {
-    background: rgba(0, 0, 0, 0);
-    color: #fdf6e3;
-}
-
-/* #custom-dot { */
-/*     font-size: 8px; */
-/*     font-family: Typeface; */
-/* } */
-/* #custom-memicon1 { */
-/*     font-size: 18px; */
-/* } */
-/* #custom-cpuicon { */
-/*     font-weight: normal; */
-/*     font-size: 18px; */
-/* } */
 
 #workspaces {
     font-size: 100pt;
     font-family: Typeface;
-
     padding: 2px 12px 2px 12px;
-    /* background: #1e2326; */
-    background: #2e3336;
     border: 0px solid;
     border-radius: 8px;
-    /* min-width: 220px; */
+    background: @background;
 }
 
 #workspaces button.active {
-    background: #175B70;
+    /* background: #175b70; */
+    background: @color1;
 }
 
-#custom-updates{
-    padding: 3px 3px 3px 3px;
-    background: #591770;
-    border: 0px solid;
-    border-radius: 8px;
-}
-
-#custom-drawer-sign{
+#custom-drawer-sign {
     font-size: 12pt;
-    /* padding: 3px 9px 9px 3px; */
-    background: #0f1215;
-    /* background: #591770; */
     border: 0px solid;
     border-radius: 20px;
+    background: @color0;
 }
 
-#custom-nightmode{
+#custom-updates {
+    padding: 3px 3px 3px 3px;
+    border: 0px solid;
+    border-radius: 8px;
+    /* background: #591770; */
+    background: @color8;
+}
+
+#custom-nightmode {
     padding: 3px 8px 3px 8px;
-    /* background: #ffff88; */
-    background: #207057;
     border: 0px solid;
     border-radius: 8px;
+    /* background: #207057; */
+    background: @color12
 }
 
-#custom-wallpaper-picker{
+#custom-wallpaper-picker {
     padding: 3px 3px 3px 3px;
-    /* background: #ffff88; */
-    background: #2F7017;
     border: 0px solid;
     border-radius: 8px;
+    /* background: #2F7017; */
+    background: @color13
 }
 
-#custom-hyprpicker{
+#custom-hyprpicker {
     padding: 3px 3px 3px 3px;
-    background: #f34444;
     border: 0px solid;
     border-radius: 8px;
+    /* background: #f34444; */
+    background: @color14
 }
 
-/* #custom-app{ */
-/*     background: #2e3336; */
-/*     border: 0px solid; */
-/*     border-radius: 8px; */
-/* } */
-
-#clock{
+#clock {
     font-size: 11pt;
     padding: 3px 5px 3px 5px;
-    background: rgb(23, 91, 112);
     border: 0px solid;
     border-radius: 8px;
     min-width: 180px;
+    /* background: #175b70; */
+    background: @color1;
 }
 
-.modules-right{
+.modules-right {
     border: 0px solid;
-    /*  background: #0f1215;*/
-    background: #141619;
-    /* background: none; */
     border-radius: 13px;
     padding-top: 10px;
     padding-bottom: 10px;
-    /* padding-left: 10px; */
     padding-left: 10px;
     padding-right: 10px;
-    /* margin-left: 400px; */
+    background: @color0;
 }
 
-.modules-left{
+.modules-left {
     border: 0px solid;
-    /*  background: #0f1215;*/
-    background: #141619;
-    /* background: none; */
     border-radius: 13px;
     padding-top: 10px;
     padding-bottom: 10px;
-    /* padding-left: 10px; */
     padding-left: 10px;
     padding-right: 10px;
-    /* margin-left: 400px; */
     margin-right: 20px;
+    background: @color0;
 }
 
-.modules-center{
+.modules-center {
     border: 0px solid;
-    /*  background: #0f1215;*/
-    background: #141619;
-    /* background: none; */
     border-radius: 13px;
     padding-top: 10px;
     padding-bottom: 10px;
-    /* padding-left: 10px; */
     padding-left: 10px;
     padding-right: 10px;
-    /* margin-left: 400px; */
+    background: @color0;
 }
 
-#hardware{
-    background: rgb(23, 91, 112);
+#hardware {
     padding: 0px 0px 0px 0px;
     border: 0px solid;
     border-radius: 8px;
-    /* min-width: 210px; */
+    /* background: #175b70; */
+    background: @color1;
 }
 
-#network{
-    background: rgb(23, 91, 112);
+#network {
     padding: 3px 10px;
     margin: 0px 0px 0px 0px;
     border: 0px solid;
     border-radius: 8px;
     min-width: 65px;
+    /* background: #175b70; */
+    background: @color1;
 }
 
 #custom-uptime {
     font-family: "NotoSansMono Nerd Font";
-    /* font-size: 12pt; */
     padding: 3px 8px 3px 8px;
-    background: rgb(23, 91, 112);
-    background: #2e3336;
     border: 0px solid;
     border-radius: 15px;
+    background: @background;
 }
 
 #custom-notification {
     font-family: "NotoSansMono Nerd Font";
-    /* font-size: 12pt; */
     padding: 3px 8px 3px 8px;
-    background: rgb(23, 91, 112);
-    background: #2e3336;
     border: 0px solid;
     border-radius: 15px;
+    background: @background;
+    /* background: #175b70; */
+    /* background: @color1; */
 }
 
 #battery {
     padding: 3px 10px 3px 10px;
-    background: rgb(23, 91, 112);
-    background: #2e3336;
     border: 0px solid;
     border-radius: 8px;
+    background: @background;
+    /* background: #175b70; */
+    background: @color1;
 }
 
-#cpu{
+#cpu {
     padding: 3px 3px;
     margin: 0px 0px 0px 0px;
 }
 
-/* window#waybar.kitty { */
-/*         background-color: #eeeeee; */
-/*         color: #000000; */
-/* } */
-
-#pulseaudio{
+#pulseaudio {
     padding: 3px 10px 3px 10px;
-    background: rgb(23, 91, 112);
-    background: #2e3336;
     border: 0px solid;
     border-radius: 8px;
+    background: @background;
+    /* background: #175b70; */ 
+    /* background: @color1; */
 }
 
-#custom-playerctl{
+#custom-playerctl {
     padding: 3px 10px 3px 10px;
-    background: rgb(23, 91, 112);
-    background: #2e3336;
     border: 0px solid;
     border-radius: 8px;
     min-width: 110px;
+    background: @background;
 }
 
-#tray{
+#tray {
     padding: 3px 10px 3px 10px;
-    background: #2e3336;
     border: 0px solid;
     border-radius: 8px;
+    background: @background;
 }
 
-#custom-cpuicon{
+#custom-cpuicon {
     padding: 3px 0px;
     margin: 0px 0px 0px 0px;
 }
 
-#memory{
+#memory {
     padding: 3px 3px;
     margin: 0px 0px 0px 0px;
 }
 
-#custom-memicon1{
+#custom-memicon1 {
     padding: 3px 0px;
     margin: 0px 0px 0px 0px;
 }
 
-#custom-space{
+#custom-space {
     padding: 3px 0px;
     margin: 0px 0px 0px 0px;
 }
 
-#pulseaudio{
+#pulseaudio {
     padding: 3px 0px;
     margin: 0px 0px 0px 0px;
 }
 
-#custom-app{
+#custom-app {
     padding: 3px 10px;
     margin: 0px 0px 0px 0px;
     min-width: 180px;

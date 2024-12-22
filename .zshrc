@@ -41,8 +41,11 @@ plugins=(
     fzf 
 )
 
-bindkey '^[[A' fzf-history-widget
+# pywal
+(cat ~/.cache/wal/sequences &)
+source ~/.cache/wal/colors-tty.sh
 
+# completions
 fpath=($XDG_CONFIG_HOME/zsh/completions $fpath)
 autoload -U compinit
 compinit
@@ -51,6 +54,8 @@ compinit
 # bindkey ";5C" forward-word
 # bindkey ";5D" backward-word
 # doest work for some reason: bindkey '^H' backward-kill-word
+
+bindkey '^[[A' fzf-history-widget
 
 # making home and end keys work as they should
 bindkey  "^[[H"   beginning-of-line
