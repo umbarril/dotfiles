@@ -29,3 +29,6 @@ More information about GNU stow can be found [here](https://www.gnu.org/software
 
 Also a **video** explanation about how to use it can be found [here](https://www.youtube.com/watch?v=y6XCebnB9gs).
 
+# Thanks
+
+wlogout config was taken from [here](https://github.com/zDyanTB/HyprNova/blob/master/.config/wlogout)
