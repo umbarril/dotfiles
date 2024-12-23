@@ -1,4 +1,8 @@
 
+# things you have to symlink yourself
+
+pacman.conf # < this is a symlink to /etc/pacman.conf
+
 # Default ignore
 
 RCS
