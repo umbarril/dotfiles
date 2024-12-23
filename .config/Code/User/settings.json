@@ -6,5 +6,6 @@
     "terminal.external.linuxExec": "kitty",
     "terminal.explorerKind": "both",
     "telemetry.telemetryLevel": "off",
-    "keyboard.dispatch": "keyCode"
+    "keyboard.dispatch": "keyCode",
+    "vim.vimrc.enable": true
 }
