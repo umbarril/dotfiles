@@ -1,0 +1,53 @@
+#!/bin/sh
+
+# modified from ericmurphyxyz/dotfiles volume script
+
+# Increment, decrement, or mute the volume using Pipewire and send a notification
+case $1 in
+	volume-up)
+		# Set the volume on (if it was muted)
+		# wpctl set-mute @DEFAULT_SOURCE@ 0
+		# wpctl set-volume -l 2.0 @DEFAULT_SOURCE@ 5%+
+		;;
+	volume-down)
+		# wpctl set-mute @DEFAULT_SOURCE@ 0
+		# wpctl set-volume -l 2.0 @DEFAULT_SOURCE@ 5%-
+		;;
+	mute-toggle)
+        swayosd-client --input-volume mute-toggle
+		# wpctl set-mute @DEFAULT_SOURCE@ toggle
+		;;
+esac
+
+VOLUME=$(wpctl get-volume @DEFAULT_SOURCE@ | tr -dc '0-9' | sed 's/^0\{1,2\}//')
+
+# send_notification() {
+# 	if [ "$1" = "mute" ]; then ICON="mute"; elif [ "$VOLUME" -lt 33 ]; then ICON="low"; elif [ "$VOLUME" -lt 66 ]; then ICON="medium"; else ICON="high"; fi
+# 	if [ "$1" = "mute" ]; then TEXT="Currently muted"; else TEXT="Currently at ${VOLUME}%"; fi
+#
+# 	notify-send -a "Microphone" -r 9993 -h int:value:"$VOLUME" -i "volume-$ICON" "Microphone" "$TEXT" -t 2000
+# }
+
+# https://bbs.archlinux.org/viewtopic.php?id=273842
+# TODO: adicionar codigo para ligar/desligar luz de mutar microfone (arrumar maneira de fazer sem sudo)
+# echo "1" | sudo tee "/sys/class/leds/platform::micmute/brightness"
+
+case $1 in
+	mute-toggle)
+		case "$(wpctl get-volume @DEFAULT_SOURCE@)" in
+			*MUTED* ) 
+                # send_notification mute
+                leds micmute on
+                mpv $HOME/sfx/discord-mute.mp3 --no-terminal &
+                ;;
+			*       ) 
+                # send_notification
+                leds micmute off
+                mpv $HOME/sfx/discord-unmute.mp3 --no-terminal &
+                ;;
+		esac
+        ;;
+	*)
+		# send_notification
+        ;;
+esac
