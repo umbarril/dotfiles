@@ -1,0 +1,24 @@
+#!/bin/sh
+
+if [[ -z "$@" ]]; then
+    echo "Run a program if not running in a workspace. If it's already running, toggle the workspace."
+    echo "Usage: hypr-toggle-workspace-or-run <special:workspace> <command to be run if not open>"
+    exit
+fi
+
+workspace="$1"
+command="${@:2}"
+
+echo $workspace
+echo $command
+
+appsOpen=$(hyprctl -j clients | jq ".[] | select(.workspace.name==\"$workspace\").class")
+
+if [[ ${#appsOpen} -lt 1 ]]; then
+    hyprctl dispatch "exec [workspace $workspace] $command"
+elif [[ $workspace == special:* ]]; then
+    hyprctl dispatch togglespecialworkspace ${workspace#special:}
+else
+    echo "Not a special workspace."
+fi
+

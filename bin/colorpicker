@@ -1,0 +1,23 @@
+#!/bin/sh
+
+################
+# COLOR PICKER # 
+#  by barril   #
+################
+# only works in hyprland at the moment (aug 2024)
+
+COLOR_IMG_PATH="/tmp/color.jpg"
+
+# gets a rgb color in this format: #111111
+COLOR=$(hyprpicker) 
+
+if [ ! -z $COLOR ]; then
+    # notify-send $COLOR
+    magick -size 100x100 xc:"${COLOR}" $COLOR_IMG_PATH
+    echo "$COLOR" | wl-copy
+    notify-send "Color code pasted to clipboard!" "<span color='${COLOR}'>${COLOR}</span>" -i $COLOR_IMG_PATH
+    exit 
+fi
+
+notify-send "no color selected!"
+
