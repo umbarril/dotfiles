@@ -31,4 +31,4 @@ Also a **video** explanation about how to use it can be found [here](https://www
 
 # Thanks
 
-wlogout config was taken from [here](https://github.com/zDyanTB/HyprNova/blob/master/.config/wlogout)
+wlogout and rofi config was taken from [here](https://github.com/zDyanTB/HyprNova/blob/master/.config/wlogout)

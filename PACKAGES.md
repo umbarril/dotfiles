@@ -9,7 +9,7 @@ Some of the most important packages that are used in this dots are listed below.
 - Screenshot --- grim, slurp, swappy
 - Terminal --- kitty
 - Font --- jetbrains mono nerdfont
-- Notification --- swayosc (for volume and brightness) and swaync (for everything else)
+- Notification --- swayosc (for volume and brightness), batsignal (for battery notifications) and swaync (for everything else)
 - Media Player --- mpv
 - Lock Screen --- hyprlock with hypridle
 - gtk-settings --- nwg-look
@@ -20,11 +20,20 @@ Some of the most important packages that are used in this dots are listed below.
 
 # CLI
 
-- oh my zsh --- agnoster theme
-- brightnessctl --- for changing brightness
-- playerctl --- for controlling media players
-- pavucontrol --- for controlling audio
-- imagemagick --- for image manipulation
+- Zsh theming -- Oh My Zsh (agnoster theme)
+- Brightness --- brightnessctl
+- Media players --- playerctl
+- Audio --- pavucontrol
+- Image manipulation --- imagemagick
+- Json parsing --- jq
+- Fuzzy finding --- fzf
+- Directory jumping --- zoxide
+- Color Picker --- hyprpicker
+- Night mode --- wlsunset
+- ls replacement --- exa
+- cat replacement --- bat
+- find replacement --- fd
+- grep replacement --- ripgrep
 
 # Optional packages
 
@@ -33,4 +42,5 @@ Some of the most important packages that are used in this dots are listed below.
 - Browser --- firefox
 - Music --- spotify-tui (TODO) and foobar2000 (TODO)
 - Note taking --- obsidian and nvim
-- Bluetooth --- Bluez, blueman
+- Bluetooth --- bluez, blueman
+
