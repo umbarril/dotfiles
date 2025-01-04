@@ -19,7 +19,7 @@ case $1 in
 esac
 
 case $1 in
-	mute)
+	mute-toggle)
 		case "$(wpctl get-volume @DEFAULT_AUDIO_SINK@)" in
 			*MUTED* ) 
                 leds mute on
