@@ -1,0 +1,160 @@
+#!/bin/bash
+
+# Power saving script (modified from: https://new.reddit.com/r/linux/comments/11b0vci/tip_how_i_doubled_my_laptops_battery_life)
+
+# Usage:
+# power-mode ac
+# power-mode battery
+
+# set -ac
+
+# TODO: mudar isso para na verdade ser uma opção em vez de simplesmente ver uma variavel de ambiente
+MODE=$BARRIL_MODE
+
+main() {
+    if [[ -f /tmp/power-mode ]]; then
+        CURRENT=$(cat /tmp/power-mode)
+    fi
+
+    case "$@" in
+        a | ac)
+            if [[ $CURRENT = a ]]; then
+                echo "Already at AC mode!"
+                exit
+            fi
+            ac
+            echo a > /tmp/power-mode 
+            ;;
+        battery-discord)
+            DISCORD=1
+            ;&   # goes to battery)
+        b | battery)
+            if [[ $CURRENT = b ]] ; then
+                echo "Already at battery mode!"
+                exit
+            fi
+            battery
+            echo b > /tmp/power-mode 
+            ;;
+        reset)
+            echo "" > /tmp/power-mode 
+            ;;
+        get)
+            cat /tmp/power-mode
+            ;;
+        *)
+            usage
+            ;;
+    esac
+}
+
+usage() {
+    echo "Usage: power-mode [ac|battery|battery-discord]"
+}
+
+_bluetooth() {
+  # $1 = block|unblock
+  rfkill list bluetooth -o ID -n | xargs -rn1 rfkill "$1"
+}
+
+# _hinting() {
+#   # $1 = full|medium|none
+#   
+#   # gnome
+#   # gsettings set \
+#   #   org.gnome.settings-daemon.plugins.xsettings hinting "$1"
+#   
+#
+# }
+
+battery() {
+    if [[ $MODE = dwm ]]; then
+        battery_xorg
+    elif [[ $MODE = hyprland ]]; then
+        battery_hyprland
+    fi
+}
+
+battery_hyprland() {
+    echo aaa
+    hyprctl keyword animations:enabled false
+    hyprctl keyword decoration:blur:enabled false
+    hyprctl keyword decoration:drop_shadow false
+    hyprctl keyword decoration:rounding 0
+    hyprctl keyword misc:vfr true
+    hyprctl keyword monitor ,1366x768@47.99,auto,1 
+
+    _bluetooth block
+}
+
+# tweaks to take less battery.
+battery_xorg() {
+  # killing my compositor
+  if [[ -z $(pgrep picom) ]]; then
+    pkill picom
+  fi
+
+  xrandr --output eDP1 --mode 1366x768 --rate 47.99
+  echo "changed display to 48hz"
+
+  {
+    brightnessctl set 15%
+  } &> /dev/null
+
+  if [[ $DISCORD = 1 ]]; then
+      xdotool search --class vesktop windowkill
+  fi
+
+  _bluetooth block
+  # _hinting none
+
+  # Open empty tab in all firefox windows
+  # origwin="$(xdotool getactivewindow)"
+  # ffmain="$(xdotool search --onlyvisible --classname '^firefox$')"
+  # for win in $(xdotool search --onlyvisible --class '^firefox$'); do
+  #   if ! [[ "$win" == "$ffmain" ]]; then
+  #     xdotool windowactivate --sync "$win"
+  #     firefox about:blank
+  #   fi
+  # done
+  # xdotool windowactivate "$origwin"
+}
+
+ac() {
+    if [[ $MODE = dwm ]]; then
+        ac_xorg
+    elif [[ $MODE = hyprland ]]; then
+        ac_hyprland
+    fi
+}
+
+ac_hyprland() {
+    hyprctl keyword animations:enabled true
+    hyprctl keyword decoration:blur:enabled true
+    hyprctl keyword decoration:drop_shadow true
+    hyprctl keyword decoration:rounding true
+    hyprctl keyword misc:vfr true
+    hyprctl keyword monitor ,1366x768@60.00,auto,1
+
+    _bluetooth unblock
+}
+
+# undo battery()
+ac_xorg() {
+  # starts my compositor if not running (nao funciona)
+  if [[ ! -z $(pgrep picom) ]]; then
+    setsid picom
+  fi
+
+  {
+    brightnessctl set 70%
+  } &> /dev/null
+
+  xrandr --output eDP1 --mode 1366x768 --rate 60.00
+  echo "changed display to 60hz"
+
+  _bluetooth unblock
+  # _hinting full
+}
+
+main "$@"

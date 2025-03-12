@@ -6,7 +6,6 @@ if pgrep -x "wlogout" > /dev/null; then
     exit 0
 fi
 
-
 # Detect monitor mon_height and scaling factor
 mon_height=$(hyprctl -j monitors | jq -r '.[] | select(.focused==true) | .height / .scale' | awk -F'.' '{print $1}')
 mon_width=$(hyprctl -j monitors | jq -r '.[] | select(.focused==true) | .width / .scale' | awk -F'.' '{print $1}')

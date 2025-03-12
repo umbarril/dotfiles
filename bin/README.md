@@ -1,5 +1,6 @@
 
 # NOTE
 
-"led" is a simple tool written in C to change keyboard leds on Linux made by me.
+Some of the scripts here depend on my C programs. 
+Check this [repo](https://github.com/umbarril/helpful-binaries) and build the binaries to use them.
 

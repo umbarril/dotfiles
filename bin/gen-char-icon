@@ -1,0 +1,7 @@
+#!/bin/bash 
+
+# fontpath=$(fc-match "Noto Mono" -f "%{file}")
+# magick -gravity center -background transparent -fill white -size 100x100 -font $fontpath caption:"😀" a.png
+
+# magick -gravity center -background transparent -size 64x64 pango:"😀" PNG:-
+magick -gravity center -background transparent -pointsize 24 pango:"😀" PNG:-
