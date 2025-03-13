@@ -1,0 +1,41 @@
+#!/bin/sh
+
+if [ -z $2 ]; then
+    SAVE_DIR="$HOME/Pictures/Screenshots"
+else
+    SAVE_DIR=$2
+fi
+
+IMGPATH=$(date "+$SAVE_DIR/%m-%d-%Y-$RANDOM.png")
+
+# TODO: implementar sistema de opções com dash (talvez um -hypr?)
+case $1 in
+    full)
+        scrot $IMGPATH -z -e 'xclip -selection clipboard -t image/png -i $f'
+        ;;
+    select)
+        scrot $IMGPATH -s -f --line mode=edge -z -e 'xclip -selection clipboard -t image/png -i $f' 
+        ;;
+    full-hypr)
+        grimblast copysave screen $IMGPATH
+        # grim  $IMGPATH && wl-copy < $IMGPATH
+        ;;
+    select-hypr)
+        # grim -g "$(slurp)" $IMGPATH && wl-copy < $IMGPATH
+        grimblast --freeze copysave area $IMGPATH
+        # //&& play $HOME/.config/hypr/assets/sounds/camera-shutter.ogg
+        ;;
+    edit-hypr)
+        # grim -g "$(slurp)" $IMGPATH && wl-copy < $IMGPATH
+        grimblast --freeze edit area $IMGPATH
+        # //&& play $HOME/.config/hypr/assets/sounds/camera-shutter.ogg
+        ;;
+esac
+
+if [ -f $IMGPATH ]; then
+    notify-send "Screenshot saved at $IMGPATH" -I $IMGPATH
+    canberra-gtk-play -i camera-shutter -d "screenshotTaken"
+else
+    notify-send "ERROR WHEN TRYING TO TAKE SCREENSHOT AT $IMGPATH"
+fi
+

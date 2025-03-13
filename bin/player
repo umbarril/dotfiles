@@ -1,0 +1,37 @@
+#!/bin/bash
+
+PLAYER=$(playerctl metadata --format "{{ playerName }}")
+
+# detects if something is being played. if not, exit
+# FIX: this
+# if [[ PLAYER = '*Not found*' ]]; then
+#   exit
+# fi 
+
+case $1 in
+    play-pause)
+        playerctl play-pause
+        TEXT=$(playerctl metadata --format "{{ title }}")
+        ;;
+    previous)
+        playerctl previous
+        
+        TEXT=$(playerctl metadata --format "Playing previous: {{ title }}")
+        ;;
+    next)
+        playerctl next
+        TEXT=$(playerctl metadata --format "Playing next: {{ title }}")
+        ;;
+    *)
+        exit;;
+esac
+
+IMG=$(playerctl metadata --format "{{ mpris:artUrl }}")
+PNAME=$(playerctl metadata --format "{{ playerName }}")
+
+# sleeping so playerctl has time to update status
+sleep 0.5s
+
+# TODO: mostrar album + tempo restante
+# parece que no firefox eu nao consigo tirar o tempo restante com o playerctl (ou sera que o problema eh no mpris?)....
+notify-send -i $IMG -a "Player" -r 6663 "$(playerctl status) on $PNAME" "$TEXT" -t 2000
