@@ -19,7 +19,10 @@ map DD delete
 map p paste
 map x cut
 map y copy
-# map <enter> open
+map <enter> open
+# map <enter> :quit
+#
+open nvim
 
 cmd copy_to_clipboard %{{
     if type pbcopy > /dev/null 2>&1; then
@@ -29,8 +32,6 @@ cmd copy_to_clipboard %{{
     fi
 }}
 map <c-c> :copy_to_clipboard
-
-map <enter> :quit
 
 # unmap the default rename keybinding
 map r
@@ -181,7 +182,7 @@ cmd sudomkfile ${{
   sudo $EDITOR $ans
 }}
 
-cmd setwallpaper %cp "$f" ~/.config/wall.png && xwallpaper --zoom "$f"
+# cmd setwallpaper %cp "$f" ~/.config/wall.png && xwallpaper --zoom "$f"
 
 cmd fzf_jump ${{
   res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"

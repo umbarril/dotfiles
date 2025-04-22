@@ -44,3 +44,10 @@ Some of the most important packages that are used in this dots are listed below.
 - Note taking --- obsidian and nvim
 - Bluetooth --- bluez, blueman
 
+# Gnome
+
+gnome-bluetooth-3.0
+gnome-epub-thumbnailer
+gnome-keyring
+gnome-randr-rust
+gnome-tweaks

@@ -16,21 +16,27 @@ alias fman="compgen -c | fzf | xargs man"
 # alias grep="rg"
 alias vi="nvim"
 alias vim="nvim"
-# alias ls="eza --icons"
-
-# alias ls="eza"
+# alias lsdl="lsd -al"
+alias ls="lsd"
 
 alias :q=exit
 alias ..='cd .'
 alias ....='cd ../..'
 alias pm="sudo pacman"
 alias p="sudo pacman"
+alias syu="sudo pacman -Syu"
 # alias sudo='sudo ' # can use this if using zsh autocorretion https://unix.stackexchange.com/questions/260563/sudo-nocorrect-command-not-found
 alias yeet='yay -R'
 alias sxiv="nsxiv"
 alias image="nsxiv"
 alias img="nsxiv"
 alias sudovim="sudoedit"
+
+# alias man="bro"
+
+# friggin cool utility using fzf to list installed packages showing a preview of each 
+# https://www.reddit.com/r/archlinux/comments/z2rk7h/comment/ixlqtb5/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+alias pzf="yay -Qq | fzf --preview 'yay -Qil {}' --height=97% --layout=reverse --bind 'enter:execute(yay -Qil {} | less)'"
 
 # alias cd to zoxide
 # sadly this glitches out when trying to sudo..
@@ -40,9 +46,26 @@ mkcd() {
     mkdir "$1" && cd "$1";
 }
 
+# for each extra dot after cd .., go back one more directory
+# cd() {
+#     case "$1" in
+#         ...*)
+#             local dots="${#1}"
+#             for ((i=0; i < dots; i++)); do
+#                 path+='../'
+#             done
+#             set -- "$path" && unset dots path
+#             ;;
+#     esac
+#
+#     command cd "$@"
+# }
+
 aulahj() {
     vim $(date +aula-%d-%m-%y.md) 
 }
+
+alias please="sudo"
 
 alias sl="sl --ed20lcGw"
 

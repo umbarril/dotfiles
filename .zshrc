@@ -41,6 +41,10 @@ plugins=(
     fzf 
 )
 
+# virtualenvwrapper
+export WORKON_HOME=~/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
+
 # pywal
 (cat ~/.cache/wal/sequences &)
 source ~/.cache/wal/colors-tty.sh

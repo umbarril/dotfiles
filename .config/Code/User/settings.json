@@ -7,5 +7,6 @@
     "terminal.explorerKind": "both",
     "telemetry.telemetryLevel": "off",
     "keyboard.dispatch": "keyCode",
-    "vim.vimrc.enable": true
+    "vim.vimrc.enable": true,
+    "update.mode": "none"
 }

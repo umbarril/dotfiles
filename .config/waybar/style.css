@@ -57,6 +57,10 @@ tooltip {
     background: @color1;
 }
 
+#workspaces button.urgent {
+    background: @color8;
+}
+
 #custom-drawer-sign {
     font-size: 12pt;
     border: 0px solid;
