@@ -1,3 +1,10 @@
+/* find enabled prefs here: */
+
+/* engines I use:
+ * https://unduck.link?q=%s */
+
+/* let me add new search engines */
+user_pref("browser.urlbar.update2.engineAliasRefresh", true);
 
 /* disable about:config warning */
 user_pref("browser.aboutConfig.showWarning", false);
