@@ -1,0 +1,11 @@
+;; https://github.com/dreamsofcode-io/home-row-mods
+;; TODO: map wasd to arrow when pressing right-alt or similar
+
+;; this simple config below maps swaps caps-lock and escape keys
+(defsrc
+  caps esc
+)
+(deflayer base
+  esc caps
+)
+

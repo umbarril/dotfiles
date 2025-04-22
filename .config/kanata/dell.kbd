@@ -1,0 +1,9 @@
+(defcfg
+    linux-dev-names-include ( 
+        "Dell Computer Corp Dell Universal Receiver" 
+        "Dell Computer Corp Dell Universal Receiver Consumer Control"
+    )
+    linux-continue-if-no-devs-found yes
+)
+
+(include "swap-caps-esc.kbd")
