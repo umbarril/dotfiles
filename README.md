@@ -17,7 +17,12 @@ First, clone the repo in your $HOME directory using git.
 cd ~
 git clone https://github.com/UmBarril/dotfles.git
 ```
+Download git submodules.
 
+```bash
+cd dotfiles
+git submodule update --init --recursive
+```
 Then use GNU stow to create the symlinks.
 
 ```bash
