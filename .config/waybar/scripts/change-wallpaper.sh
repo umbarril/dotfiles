@@ -2,7 +2,8 @@
 
 BASE_DIR="$HOME/Pictures/Wallpapers/"
 
-WALLPAPER=$(ls -N $BASE_DIR | while read A ; do  echo -en "$A\x00icon\x1f$BASE_DIR$A\n"; done | rofi -dmenu -theme-str 'element-icon { size: 2.0em;}')
+WALLPAPER=$(ls -N $BASE_DIR | while read A ; do  echo -en "$A\0icon\x1fthumbnail://$BASE_DIR$A\n"; done | rofi -dmenu -show-icons -theme-str 'element-icon { size: 2.0em;}')
+# WALLPAPER=$(ls -N $BASE_DIR | while read A ; do  echo -en "$A\x00icon\x1f$BASE_DIR$A\n"; done | rofi -dmenu -theme-str 'element-icon { size: 2.0em;}')
 
 if [[ -z $WALLPAPER ]]; then
     exit
