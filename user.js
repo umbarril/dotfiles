@@ -9,8 +9,8 @@ user_pref("browser.urlbar.update2.engineAliasRefresh", true);
 /* disable about:config warning */
 user_pref("browser.aboutConfig.showWarning", false);
 
-/* experimental tab groups on firefox */
-user_pref("browser.tabs.groups.enabled", true);
+// /* experimental tab groups on firefox */
+// user_pref("browser.tabs.groups.enabled", true);
 
 /* disable middle mouse paste */
 user_pref("middlemouse.paste", false);
@@ -28,3 +28,8 @@ user_pref("extensions.pocket.enabled",			false);
 
 /* enable userChrome.css */
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+
+/* pinch zoom with shift scroll */
+user_pref("mousewheel.with_shift.action", 5);
+/* normal zoom with ctrl scroll */
+user_pref("mousewheel.with_control.action", 3);
