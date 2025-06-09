@@ -1,4 +1,10 @@
 
- @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
+/* Hide the Tabs Toolbar in Firefox */
+/* SIDEBERRY FTW!!!! */
+#TabsToolbar
+{
+    visibility: collapse;
+}
 
