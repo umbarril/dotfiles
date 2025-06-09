@@ -11,15 +11,7 @@ case $1 in
 		;;
 	mute-toggle)
         swayosd-client --output-volume mute-toggle
-		;;
-    *)
-        echo "Usage: volume [up|down|mute]" 
-        exit
-        ;;
-esac
 
-case $1 in
-	mute-toggle)
 		case "$(wpctl get-volume @DEFAULT_AUDIO_SINK@)" in
 			*MUTED* ) 
                 leds mute on
@@ -27,8 +19,11 @@ case $1 in
 			*       ) 
                 leds mute off
                 ;;
-		esac;;
-	*)
-        # canberra-gtk-play -i audio-volume-change -d "changeVolume"
+		esac
+		;;
+    *)
+        echo "Usage: volume [up|down|mute]" 
+        exit
         ;;
 esac
+
