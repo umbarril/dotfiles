@@ -1,5 +1,7 @@
 export BARRIL_MODE=hyprland
 
+export MANPAGER="nvim +Man!"
+
 # export XDG_CURRENT_DESKTOP='dwm'
 
 export HISTFILE=~/.histfile
