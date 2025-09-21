@@ -300,7 +300,8 @@
     "custom/battery-threshold": {
         "format": "L: {0}%",
         "exec": "battery-threshold get | awk '{print $2}'",
-        "on-click": "bash battery-threshold $(echo 'on;off' | rofi -sep ';' -dmenu -p 'Choose to toggle battery threshold ON or OFF:')",
+        "signal": 1,
+        "on-click": "battery-threshold $(echo 'custom;normal' | rofi -sep ';' -dmenu -p 'Choose to toggle battery threshold ON or OFF:') && /bin/kill -s SIGRTMIN+1 waybar",
         "tooltip": false
     },
     "cpu": {
@@ -313,8 +314,8 @@
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
+        "critical-threshold": 85,
+        "format-critical": "{temperatureC}°C !",
         "format": "{temperatureC}°C ",
         "format-icons": [] // [" ", "", " "]
     },
@@ -413,10 +414,5 @@
                 "name": "cava"
             }
         ]
-        "icon-size": 14,
-        "transition-duration": 250,
-            {
-            },
-                "type": "audio-in",
     }
 }
