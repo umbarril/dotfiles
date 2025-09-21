@@ -19,5 +19,5 @@ swww img "$FULL_PATH" --transition-fps 60 --transition-type grow
 sleep 1.0
 
 wal -i "$FULL_PATH"     # reload pywal colors
-killall -SIGUSR2 waybar # and reload everything that uses pywal colors vvvv
+killall waybar; setsid waybar # and reload everything that uses pywal colors vvvv
 killall -SIGUSR1 kitty  # kitty has to have allow_remote_control=yes in its config for this to work

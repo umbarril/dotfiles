@@ -10,5 +10,5 @@ if [[ ! -f "$CONFIG_PATH" ]]; then
 fi
 
 # Watch the config file for changes and restart Waybar
-echo "$HOME/.config/waybar/config.jsonc" | entr -pr bash -c 'killall -SIGUSR2 waybar'
+echo "$HOME/.config/waybar/config.jsonc" | entr -pr bash -c 'killall waybar && setsid waybar &'
 
