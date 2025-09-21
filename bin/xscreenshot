@@ -22,7 +22,7 @@ case $1 in
         ;;
     select-hypr)
         # grim -g "$(slurp)" $IMGPATH && wl-copy < $IMGPATH
-        grimblast --freeze copysave area $IMGPATH
+        grimblast --freeze copy area $IMGPATH
         # //&& play $HOME/.config/hypr/assets/sounds/camera-shutter.ogg
         ;;
     edit-hypr)
@@ -33,7 +33,7 @@ case $1 in
 esac
 
 if [ -f $IMGPATH ]; then
-    notify-send "Screenshot saved at $IMGPATH" -I $IMGPATH
+    notify-send "Screenshot $IMGPATH" -i $IMGPATH -t 3000
     canberra-gtk-play -i camera-shutter -d "screenshotTaken"
 else
     notify-send "ERROR WHEN TRYING TO TAKE SCREENSHOT AT $IMGPATH"
