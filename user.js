@@ -33,3 +33,17 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("mousewheel.with_shift.action", 5);
 /* normal zoom with ctrl scroll */
 user_pref("mousewheel.with_control.action", 3);
+
+/* remove "Inspect accessibility Properties" (context menu): */
+/* user_pref("devtools.accessibility.enabled", false); */
+
+/* remove Screenshot native extension (button, context menu) */
+user_pref("extensions.screenshots.disabled", true);
+
+/* Disable expensive backdrop filter CSS property (performance, recommended for old and slow computers only): */
+/* user_pref("layout.css.backdrop-filter.enabled", false) */
+
+/* This will let me use different search engines in private mode */
+/* Go to Options> Search> "Choose a different default search engine for Private Windows only" and select the engine of choice */
+user_pref("browser.search.separatePrivateDefault", true);
+user_pref("browser.search.separatePrivateDefault.ui.enabled", true);
