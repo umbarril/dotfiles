@@ -11,31 +11,33 @@ IMGPATH=$(date "+$SAVE_DIR/%m-%d-%Y-$RANDOM.png")
 # TODO: implementar sistema de opções com dash (talvez um -hypr?)
 case $1 in
     full)
-        scrot $IMGPATH -z -e 'xclip -selection clipboard -t image/png -i $f'
-        ;;
-    select)
-        scrot $IMGPATH -s -f --line mode=edge -z -e 'xclip -selection clipboard -t image/png -i $f' 
-        ;;
-    full-hypr)
         grimblast copysave screen $IMGPATH
         # grim  $IMGPATH && wl-copy < $IMGPATH
         ;;
-    select-hypr)
-        # grim -g "$(slurp)" $IMGPATH && wl-copy < $IMGPATH
-        grimblast --freeze copy area $IMGPATH
+    select)
+        grim -g "$(slurp)" $IMGPATH && wl-copy < $IMGPATH
+        # grimblast --freeze copy area $IMGPATH
         # //&& play $HOME/.config/hypr/assets/sounds/camera-shutter.ogg
         ;;
-    edit-hypr)
+    edit)
         # grim -g "$(slurp)" $IMGPATH && wl-copy < $IMGPATH
         grimblast --freeze edit area $IMGPATH
         # //&& play $HOME/.config/hypr/assets/sounds/camera-shutter.ogg
         ;;
+    *)
+        echo "Usage: xscreenshot [full|select|edit] [save_directory]"
+        exit 1
+        ;;
 esac
 
 if [ -f $IMGPATH ]; then
-    notify-send "Screenshot $IMGPATH" -i $IMGPATH -t 3000
+    notify-send "Image saved at $SAVE_DIR" "Click to open" -c screenshot -i "$IMGPATH" --action="open=Open image" --expire-time=10000
+
+    # Play sound (optional)
     canberra-gtk-play -i camera-shutter -d "screenshotTaken"
+
+    # Action to open the image is on the swaync config
 else
-    notify-send "ERROR WHEN TRYING TO TAKE SCREENSHOT AT $IMGPATH"
+    notify-send "Screenshot failed"
 fi
 
