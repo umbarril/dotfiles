@@ -32,6 +32,15 @@
   "hide-on-action": true,
   "script-fail-notify": true,
 
+  "scripts": {
+      "screenshot-open": {
+          "exec": "kolourpaint ~/Pictures/Screenshots/$(ls -t ~/Pictures/Screenshots | head -n1)",
+          "urgency": "Normal",
+          "category": "screenshot",
+          "run-on": "action"
+      }
+  },
+
   "widgets": [
     "buttons-grid",
     "inhibitors",
