@@ -147,3 +147,9 @@ source /usr/share/fzf/key-bindings.zsh
 source $ZSH/oh-my-zsh.sh
 
 eval "$(zoxide init zsh)"
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/barril/.config/.dart-cli-completion/zsh-config.zsh ]] && . /home/barril/.config/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+

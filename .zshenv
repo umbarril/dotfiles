@@ -1,6 +1,6 @@
 export BARRIL_MODE=hyprland
 
-export MANPAGER="nvim +Man!"
+# export MANPAGER="nvim +Man!"
 
 # export XDG_CURRENT_DESKTOP='dwm'
 
@@ -18,8 +18,6 @@ export TERMINAL='kitty'
 export VIDEO='mpv'
 export COLORTERM='truecolor'
 export IMAGE='feh'
-export WINDOW_MANAGER='dwm'
-export WM='dwm'
 export PAGER='less'
 export VISUAL='nvim'
 export BROWSER='firefox'
@@ -30,22 +28,10 @@ export FZF_BASE=/usr/bin/fzf
 # taskd configuration
 export TASKDDATA=/var/lib/taskd
 
-# envs so java applications work properly on DWM
-# if [[ $BARRIL_MODE = dwm ]]; then
-#     export _JAVA_AWT_WM_NONREPARENTING=1
-#     export AWT_TOOLKIT=MToolkit
-#     export JDK_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-# fi
-
 export GTK_THEME=Adwaita:dark
 export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
 # export QT_STYLE_OVERRIDE=Adwaita-Dark
 export QT_QPA_PLATFORMTHEME=qt6ct
-
-# making cedilla work (portuguese speakers thank me later) 
-# NOT NECESSARY WITH IBUS 
-# export GTK_IM_MODULE=cedilla
-# export QT_IM_MODULE=cedilla
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -76,6 +62,12 @@ export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
 
 # cargo (rust)
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# android
+export ANDROID_HOME=$HOME/Android/Sdk
+export ANDROID_USER_HOME=$HOME/.android
+export PATH="/opt/android-sdk/cmdline-tools/latest/bin:$PATH"
+export PATH="/home/barril/Android/Sdk/emulator:$PATH"
 
 # set PATH so it includes user's private ~/.local/bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then

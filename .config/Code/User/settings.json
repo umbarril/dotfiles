@@ -8,5 +8,11 @@
     "telemetry.telemetryLevel": "off",
     "keyboard.dispatch": "keyCode",
     "vim.vimrc.enable": true,
-    "update.mode": "none"
+    "update.mode": "none",
+    "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor",
+        "*.pdf": "default"
+    },
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "makefile.makefilePath": "./Makefile"
 }
