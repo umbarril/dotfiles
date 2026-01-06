@@ -14,5 +14,6 @@
         "*.pdf": "default"
     },
     "github.copilot.nextEditSuggestions.enabled": true,
-    "makefile.makefilePath": "./Makefile"
+    "makefile.makefilePath": "./Makefile",
+    "git.autofetch": true
 }
