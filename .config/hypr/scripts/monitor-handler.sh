@@ -3,11 +3,12 @@
 function handle {
   if [[ $line == "monitoradded>>"* ]]; then
     echo "New display detected, sleeping for a few seconds..."
-    sleep 15s
+    sleep 15s # completely arbitrary delay or else this will not have effect
     echo "Reloading Waybar..."
-    # completely arbitrary delay or else this will not have effect
     killall waybar
     setsid waybar
+    echo "Reloading wallpaper..."
+    swww img $HOME/.current-wallpaper --transition-step 60 --transition-type grow
   fi
 }
 
