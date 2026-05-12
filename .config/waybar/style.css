@@ -44,7 +44,7 @@ tooltip {
 
 
 #workspaces {
-    font-size: 100pt;
+    /* font-size: 100pt; */
     font-family: Typeface;
     padding: 2px 12px 2px 12px;
     border: 0px solid;
@@ -113,20 +113,20 @@ tooltip {
 .modules-right {
     border: 0px solid;
     border-radius: 13px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
     background: @color0;
 }
 
 .modules-left {
     border: 0px solid;
     border-radius: 13px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
     margin-right: 20px;
     background: @color0;
 }
@@ -134,10 +134,10 @@ tooltip {
 .modules-center {
     border: 0px solid;
     border-radius: 13px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
     background: @color0;
 }
 

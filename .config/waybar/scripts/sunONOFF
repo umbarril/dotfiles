@@ -2,9 +2,9 @@
 
 # from https://www.reddit.com/r/hyprland/comments/16skqzv/i_make_a_shell_script_that_control_wlsunset_from/
 
-if pgrep -x "wlsunset" > /dev/null
+if [ "$(hyprctl hyprsunset temperature)" = "6000" ];
 then
-    pkill wlsunset
+    hyprctl hyprsunset temperature 4000
 else
-    wlsunset
+    hyprctl hyprsunset temperature 6000
 fi

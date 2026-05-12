@@ -15,15 +15,15 @@
     "position": "top", // Waybar position (top|bottom|left|right)
 
     // TODO: SOMEHOW MAKE THE HEIGHT EVEN SMALLER
-    "height": 12, // Waybar height (to be removed for auto height)
+    "height": 10, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
 
     // Choose the order of the modules
-    "margin-top": 7,
-    "margin-left": 12,
-    "margin-right": 12,
-    "margin-bottom": 0,
+    "margin-top": 1,
+    "margin-left": 5,
+    "margin-right": 5,
+    "margin-bottom": 2,
     "modules-left": [ 
         "hyprland/workspaces",
         "group/sounds"
