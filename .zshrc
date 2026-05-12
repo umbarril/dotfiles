@@ -24,7 +24,7 @@ antigen apply #end
 # necessary because many omz plugins misbehave on antigen
 plugins=(
     # systemadmin # many useful aliases. maybe i should try this later
-    # ufw
+    ufw
     # per-directory-history # try this later
     timer # adds a tiny timer to each command being executed
     vi-mode # VI IS LIFE
@@ -36,7 +36,7 @@ plugins=(
     docker # completion
     git # completion and MANY aliases
     gh # completion
-    # zsh-interactive-cd # completion with fzf (not necessary)
+    zsh-interactive-cd # completion with fzf (not necessary)
     
     # ARCH: command-not-found só funciona se tiver pkgfile instalado e com databases
     command-not-found
@@ -50,8 +50,8 @@ export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
 # pywal
-(cat ~/.cache/wal/sequences &)
-source ~/.cache/wal/colors-tty.sh
+# (cat ~/.cache/wal/sequences &)
+# source ~/.cache/wal/colors-tty.sh
 
 # completions
 fpath=($XDG_CONFIG_HOME/zsh/completions $fpath)
