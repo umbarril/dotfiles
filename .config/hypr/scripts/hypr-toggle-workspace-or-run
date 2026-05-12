@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [[ -z "$@" ]]; then
-    echo "Run a program if not running in a workspace. If it's already running, toggle the workspace."
+    echo "Run a program if it's not running in a workspace. If it's already running, toggle the workspace."
     echo "Usage: hypr-toggle-workspace-or-run <special:workspace> <command to be run if not open>"
     exit
 fi
